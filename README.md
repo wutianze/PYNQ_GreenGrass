@@ -2,11 +2,20 @@
 
 # [AWS GreenGrass](<https://aws.amazon.com/greengrass/>)
 
+## Greengrass Core
+
+Follow the steps to create your own AWS Greengrass Group and Greengrass Core.
+
 <https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html>
 
-# Structure
+![greengrass doc](https://github.com/xupsh/PYNQ_GreenGrass/blob/master/image/doc.png)
+---
 
-![Structure of the demo](https://github.com/xupsh/PYNQ_GreenGrass/blob/master/image/AWS%20Greengrass%20DEMO%20structure.png)
+
+# Now here comes one demo
+
+![Structure of the demo](https://github.com/xupsh/PYNQ_GreenGrass/blob/master/image/AWS%20Greengrass%20DEMO%20structure.png)  
+This demo is just for reference, you can use the iot functions [here](https://github.com/wutianze/PYNQ-IoT-demo) to build your own application. With the knowledge you learned before, you can easily create whatever you want
 
 # Quick Start
 
@@ -24,13 +33,6 @@
 
 ![sensor board](https://github.com/xupsh/PYNQ_GreenGrass/blob/master/image/sensor_board.jpeg)
 
-## Greengrass Core
-
-Follow the steps to create your own AWS Greengrass Group and Greengrass Core.
-
-<https://docs.aws.amazon.com/greengrass/latest/developerguide/gg-gs.html>
-
-![greengrass doc](https://github.com/xupsh/PYNQ_GreenGrass/blob/master/image/doc.png)
 
 ## Run the demo
 
