@@ -1,8 +1,8 @@
 # AWS IOT LAB
 ## Preparation
 - > 3 PYNQ-Z2  
-> AWS account  
-> 1 switch  
+  > AWS account  
+  > 1 switch  
 - Connect to your boards successfully.
 - Make sure your boards can access internet.
 
