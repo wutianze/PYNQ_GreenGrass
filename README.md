@@ -15,7 +15,7 @@
   sudo adduser --system ggc_user
   sudo addgroup --system ggc_group
   ```
-- In our lab, we will have one board used as core, one board used as publisher and the other used as subscriber.
+- In our lab, we will have one board used as core, two boards as device (one board used as publisher and the other used as subscriber).
 - In the core board, you have to follow [module2](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module2.html) to set your board.
 - In the device board, you have to follow [module4](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module4.html) to create your two devices. Please pay attention that the tutorial uses just one pc, we have to split the pc into two PYNQ boards. What you need to do is just replacing the two consoles opened in pc with two boards.
 - Now, in your core board, you will have /greengrass and you should run the daemon process in it.
@@ -23,7 +23,7 @@
   cd /greengrass/ggc/core/
   sudo ./greengrassd start
   ```
-  In other two boards, one is for subscriber, one is for publisher, they both use basicDiscovery.py but with different parameters.
+  In other two boards (one is for subscriber, one is for publisher), they both use basicDiscovery.py but with different parameters.
 - Wait until the deployment is finished and then you can run publisher and subscriber processes finally.
 - The test step is [here](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/test-comms.html). In publisher board, you can run:
   ```shell
