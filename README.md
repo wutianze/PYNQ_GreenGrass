@@ -23,7 +23,7 @@
   cd /greengrass/ggc/core/
   sudo ./greengrassd start
   ```
-  In other two boards (one is for subscriber, one is for publisher), they both use basicDiscovery.py but with different parameters.
+- In other two boards (one is for subscriber, one is for publisher), you will have a root-ca-certs.pem and xxx-setup.tar.gz respectively. Then unzip the package and put button.py|sensor.py in the same directory 
 - Wait until the deployment is finished and then you can run publisher and subscriber processes finally.
 - The test step is [here](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/test-comms.html). In publisher board, you can run:
   ```shell
