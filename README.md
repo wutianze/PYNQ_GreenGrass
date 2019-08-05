@@ -23,15 +23,17 @@
   cd /greengrass/ggc/core/
   sudo ./greengrassd start
   ```
-- In other two boards (one is for subscriber, one is for publisher), you will have a root-ca-certs.pem and xxx-setup.tar.gz respectively. Then unzip the package and put button.py|sensor.py in the same directory 
-- Wait until the deployment is finished and then you can run publisher and subscriber processes finally.
+- In other two boards (one is for subscriber, one is for publisher), you will have a root-ca-certs.pem and xxx-setup.tar.gz respectively. Then unzip the package and put button.py|sensor.py in the same directory.
+- Edit the button.py|sensor.py, find places "xxxx" and replace them with your own settings.
+- Deploy your group and wait until the deployment is finished and then you can run publisher and subscriber processes finally.
 - The test step is [here](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/test-comms.html). In publisher board, you can run:
   ```shell
-  python basicDiscovery.py --endpoint AWS_IOT_ENDPOINT --rootCA root-ca-cert.pem --cert publisher.cert.pem --key publisher.private.key --thingName HelloWorld_Publisher --topic 'hello/world/pubsub' --mode publish --message 'Hello, World! Sent from HelloWorld_Publisher'
+  sudo python3 button.py
   ```
   And in subscriber board, you run:
   ```shell
-  python basicDiscovery.py --endpoint AWS_IOT_ENDPOINT --rootCA root-ca-cert.pem --cert subscriber.cert.pem --key subscriber.private.key --thingName HelloWorld_Subscriber --topic 'hello/world/pubsub' --mode subscribe
+  sudo python3 sensor.py
   ```
+- Now when you press the button in publisher you can see leds in subscriber glitter. Also you can build a subscriber in AWS cloud. Search AWS IoT in *Services*. Choose *Test* and then *Subscribe to a topic*, fill the topic with yours(here hello/world/pubsub). In *MQTT payload display*, we choose the second *Display payloads as strings*. Now subscribe to the topic and you will find a new tip on the left, enter it and you can watch the information of the button actions.
 ## Further
 Now you have learned how to use aws greengrass, you can replace the "hello world" function with something cool. Maybe you can refer to [this](https://github.com/wutianze/PYNQ_GreenGrass/blob/master/demo-learning.md).
