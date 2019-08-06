@@ -27,26 +27,24 @@ AWS IoT Greengrass provides secure, over-the-air software updates of Lambda func
   sudo addgroup --system ggc_group
   ```
 - In our lab, we will have one board used as core, two boards as device (one board used as publisher and the other used as subscriber).
-- In the core board, you have to follow [module2](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module2.html) to set your board.  
+- For the core, you have to follow [module2](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module2.html) to set your board.  
+After this step, you will see the following picture in your AWS monitor. And the core process is running in your core board.
 ![Group Created](https://docs.aws.amazon.com/greengrass/latest/developerguide/images/gg-get-started-009.2.png)
-- In the device board, you have to follow [module4](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module4.html) to create your two devices. Please pay attention that the tutorial uses just one pc, we have to split the pc into two PYNQ boards. What you need to do is to replace the two consoles opened in pc with two boards' processes.  
-![Devices](https://docs.aws.amazon.com/greengrass/latest/developerguide/images/gg-get-started-065.5.png)
-- Now, in your core board, you will have /greengrass and you should run the daemon process in it.
-  ```shell
-  cd /greengrass/ggc/core/
-  sudo ./greengrassd start
-  ```
-- In other two boards (one is for subscriber, one is for publisher), you will have a root-ca-certs.pem and xxx-setup.tar.gz respectively. Then unzip the package and put button.py|sensor.py in the same directory.
-- Edit the button.py|sensor.py, find places "xxxx" and replace them with your own settings.
-- Deploy your group and wait until the deployment is finished and then you can run publisher and subscriber processes finally.
-- The test step is [here](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/test-comms.html). In publisher board, you can run:
+- Now configure two devices in AWS web.  
+![Devices](https://docs.aws.amazon.com/greengrass/latest/developerguide/images/gg-get-started-065.5.png)  
+First follow [Create AWS IoT Devices in an AWS IoT Greengrass Group](https://docs.aws.amazon.com/greengrass/latest/developerguide/device-group.html) to create your two devices. And then [Configure Subscriptions](https://docs.aws.amazon.com/greengrass/latest/developerguide/config-subs.html). Now you will see the group has been deployed successfully.  
+- Then you have to [Install the AWS IoT Device SDK for Python](https://docs.aws.amazon.com/greengrass/latest/developerguide/IoT-SDK.html) in your two device boards.  
+In this lab, we won't use basicDiscovery.py in AWS tutorial. We will use button.py and sensor.py, you can find them in this respository. Now copy the button.py to your publisher board and sensor.py to your subscriber board. Remember to copy the .py file to the folder that contains the HelloWorld_Publisher and HelloWorld_Subscriber device certificates files.  
+- Now edit the button.py&sensor.py, find places "xxxx" and replace them with your own settings. You can refer to [this](https://docs.aws.amazon.com/greengrass/latest/developerguide/test-comms.html) to find what 'xxxx' should be.
+- In publisher board, run:
   ```shell
   sudo python3 button.py
   ```
-  And in subscriber board, you run:
+  And in subscriber board, run:
   ```shell
   sudo python3 sensor.py
   ```
+  Wait a minute until the two processes is up.
 - Now when you press the button in publisher you can see leds in subscriber glitter. Also you can build a subscriber in AWS cloud. Search AWS IoT in *Services*. Choose *Test* and then *Subscribe to a topic*, fill the topic with yours(here hello/world/pubsub). In *MQTT payload display*, we choose the second *Display payloads as strings*. Now subscribe to the topic and you will find a new tip on the left, enter it and you can watch the information of the button actions.
 ## Further
 Now you have learned how to use aws greengrass, you can replace the "hello world" function with something cool. Maybe you can refer to [this](https://github.com/wutianze/PYNQ_GreenGrass/blob/master/demo-learning.md).
