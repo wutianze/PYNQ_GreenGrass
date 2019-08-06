@@ -1,6 +1,18 @@
 # AWS IOT LAB
 ## What you will learn
 After finishing the following steps, you will build a cluster using PYNQ-Z2 in which devices can communicate with each other and work together. You can press the buttons in publisher board and the leds in subscriber board can glitter accordingly.
+## What is AWS Greengrass
+AWS IoT Greengrass is software that extends cloud capabilities to local devices. This enables devices to collect and analyze data closer to the source of information, react autonomously to local events, and communicate securely with each other on local networks. AWS IoT Greengrass developers can use AWS Lambda functions and prebuilt connectors to create serverless applications that are deployed to devices for local execution.  
+The following diagram shows the basic architecture of AWS IoT Greengrass.
+![Geengrass](https://github.com/wutianze/PYNQ_GreenGrass/blob/master/image/greengrass.png)
+AWS IoT Greengrass makes it possible for customers to build IoT devices and application logic. Specifically, AWS IoT Greengrass provides cloud-based management of application logic that runs on devices. Locally deployed Lambda functions and connectors are triggered by local events, messages from the cloud, or other sources.  
+In AWS IoT Greengrass, devices securely communicate on a local network and exchange messages with each other without having to connect to the cloud. AWS IoT Greengrass provides a local pub/sub message manager that can intelligently buffer messages if connectivity is lost so that inbound and outbound messages to the cloud are preserved.  
+AWS IoT Greengrass protects user data:  
+Through the secure authentication and authorization of devices.  
+Through secure connectivity in the local network.  
+Between local devices and the cloud.  
+Device security credentials function in a group until they are revoked, even if connectivity to the cloud is disrupted, so that the devices can continue to securely communicate locally.  
+AWS IoT Greengrass provides secure, over-the-air software updates of Lambda functions.
 ## Preparation
 - > 3 PYNQ-Z2  
   > AWS account  
@@ -15,8 +27,10 @@ After finishing the following steps, you will build a cluster using PYNQ-Z2 in w
   sudo addgroup --system ggc_group
   ```
 - In our lab, we will have one board used as core, two boards as device (one board used as publisher and the other used as subscriber).
-- In the core board, you have to follow [module2](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module2.html) to set your board.
-- In the device board, you have to follow [module4](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module4.html) to create your two devices. Please pay attention that the tutorial uses just one pc, we have to split the pc into two PYNQ boards. What you need to do is to replace the two consoles opened in pc with two boards' processes.
+- In the core board, you have to follow [module2](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module2.html) to set your board.  
+![Group Created](https://docs.aws.amazon.com/greengrass/latest/developerguide/images/gg-get-started-009.2.png)
+- In the device board, you have to follow [module4](https://docs.aws.amazon.com/zh_cn/greengrass/latest/developerguide/module4.html) to create your two devices. Please pay attention that the tutorial uses just one pc, we have to split the pc into two PYNQ boards. What you need to do is to replace the two consoles opened in pc with two boards' processes.  
+![Devices](https://docs.aws.amazon.com/greengrass/latest/developerguide/images/gg-get-started-065.5.png)
 - Now, in your core board, you will have /greengrass and you should run the daemon process in it.
   ```shell
   cd /greengrass/ggc/core/
